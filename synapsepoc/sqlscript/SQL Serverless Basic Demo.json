@@ -1,5 +1,5 @@
 {
-	"name": "SQL Serverless Demo Script",
+	"name": "SQL Serverless Basic Demo",
 	"properties": {
 		"content": {
 			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://mst3tbddvo222kdipoc.dfs.core.windows.net/dlsmstpocfs1/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n\n\nCREATE DATABASE DataExplorationDB \n                COLLATE Latin1_General_100_BIN2_UTF8\n\n\nUSE DataExplorationDB\n\nCREATE EXTERNAL DATA SOURCE ContosoLake\nWITH ( LOCATION = 'https://mst3tbddvo222kdipoc.dfs.core.windows.net')\n\nCREATE LOGIN data_explorer WITH PASSWORD = 'My Very Strong Password 1234!';\n\nCREATE USER data_explorer FOR LOGIN data_explorer;\nGO\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer;\nGO\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n            BULK '/dlsmstpocfs1/NYCTripSmall.parquet',\n            DATA_SOURCE = 'ContosoLake',\n            FORMAT='PARQUET'\n    ) AS [result]",
