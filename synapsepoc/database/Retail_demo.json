@@ -1,0 +1,24 @@
+{
+	"name": "Retail_demo",
+	"properties": {
+		"Name": "Retail_demo",
+		"EntityType": "DATABASE",
+		"Description": "",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Retail\",\"Version\":\"0.1.0\"}}}",
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://dlsmstpocfs1@mst3tbddvo222kdipoc.dfs.core.windows.net/Retail_demo",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "mst3tbddvo222kdipocws1-WorkspaceDefaultStorage"
+			}
+		}
+	},
+	"type": "DATABASE"
+}
